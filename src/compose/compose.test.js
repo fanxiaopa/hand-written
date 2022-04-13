@@ -16,8 +16,9 @@ function fn4(x) {
 test('should', () => {
     const result1 = compose(fn1, fn2, fn3, fn4)(1);
     const result2 = compose(fn1, fn2, fn3)(2);
-
+    const result3 = compose()(10);
     expect(result1).toBe(11);
     expect(result2).toBe(8);
+    expect(result3).toBe(10);
 })
 

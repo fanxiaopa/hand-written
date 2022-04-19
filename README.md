@@ -8,3 +8,4 @@
 - new操作符
 - 并行的Promise调度器
 - setInterval模拟
+- 实现call，apply，bind

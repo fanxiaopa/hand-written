@@ -10,3 +10,4 @@
 - setInterval模拟
 - 实现call，apply，bind
 - 深拷贝
+- 函数柯里化

@@ -1,7 +1,7 @@
 # hand-written
 手写一些js
 
-- compose
+- [compose](https://github.com/fanxiaopa/hand-written/blob/main/src/compose/index.js)
 - [Emitter](https://github.com/fanxiaopa/hand-written/blob/main/src/emitter/index.js)
 - [数组拍平](https://github.com/fanxiaopa/hand-written/blob/main/src/flattenArray/index.js)
 - [数组去重](https://github.com/fanxiaopa/hand-written/blob/main/src/uniqueRepeat/index.js)

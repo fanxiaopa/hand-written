@@ -11,4 +11,4 @@
 - [实现call，apply，bind](https://github.com/fanxiaopa/hand-written/tree/main/src/callBindApply)
 - [深拷贝](https://github.com/fanxiaopa/hand-written/blob/main/src/deepClone/index.js)
 - [函数柯里化](https://github.com/fanxiaopa/hand-written/tree/main/src/currying)
-- [冒泡排序](https://github.com/fanxiaopa/hand-written/blob/main/src/bubbleSort/index.js)
+- [排序](https://github.com/fanxiaopa/hand-written/tree/main/src/sort)

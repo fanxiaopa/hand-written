@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2022-04-25 11:51:55
- * @LastEditTime: 2022-04-25 13:45:45
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-05-05 18:26:46
+ * @LastEditors: yxfan yxfan@streamax.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /hand-written/src/sort/readme.md
 -->
@@ -62,3 +62,7 @@ selectionSort([3, 6, 2, 4, 1]); // [ 1, 2, 3, 4, 6 ]
 ```
 ##### 动图
 ![image](https://www.runoob.com/wp-content/uploads/2019/03/selectionSort.gif)
+
+### 插入排序
+
+![image](https://www.runoob.com/wp-content/uploads/2019/03/insertionSort.gif)

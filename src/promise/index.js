@@ -55,7 +55,7 @@ class MPromise {
 			: (value) => value;
 		const onRealRejected = this._isFunction(onRejected)
 			? onRejected
-			: (reason) => { throw reason }
+			: (reason) => { throw reason}
 
 		const promise2 = new MPromise((resolve, reject) => {
 
@@ -80,7 +80,6 @@ class MPromise {
 					}
 				});
 			}
-
 			switch(this.status) {
 				case FULFILLED:
 					fulFilledMicrotask();
@@ -89,8 +88,8 @@ class MPromise {
 					rejectionMicrotask();
 					break;
 				case PENDING:
-					this.FULFILLED_CB_LIST.push(onRealFulFilled);
-					this.REJECTED_CB_LIST.push(onRealRejected);
+					this.FULFILLED_CB_LIST.push(fulFilledMicrotask);
+					this.REJECTED_CB_LIST.push(rejectionMicrotask);
 
 			}
 		});
@@ -152,16 +151,74 @@ class MPromise {
 	_isFunction(fn) {
 		return typeof fn === 'function';
 	}
+
+    static resolve(value) {
+        return new MPromise(resolve => {
+            resolve(value)
+        })
+    }
+    static reject(reason) {
+        return new MPromise((_, reject) => {
+            reject(reason)
+        })
+    }
+    static race(promiseArr) {
+        return new MPromise((resolve, reject) => {
+            promiseArr.forEach(promise => {
+                promise.then((value) => {
+                    resolve(value);
+                }, (reason) => {
+                    reject(reason);
+                })
+            });
+        });
+    }
+    static all(promiseArr) {
+        const arr = [];
+        let point = 0;
+        const length = promiseArr.length;
+        return new MPromise((resolve, reject) => {
+            promiseArr.forEach((promise, index) => {
+                promise.then(value => {
+                    arr[index] = value;
+                    point++;
+                    if (point === length) {
+                        resolve(arr);
+                    }
+                }, reason => {
+                    reject(reason);
+                })
+            })
+        })
+    } 
 }
 
 const p = new MPromise((resolve, reject) => {
-	resolve();
+    setTimeout(() => {
+    	resolve(1);
+    }, 2000);
 });
 p.then((res) => {
-	console.log('fulfilled', res);
-	throw 'xxi';
-}, rej => {
-	console.log('rejected', rej);
-}).catch((err) => {
-	console.log('catch', err, p);
-});
+    console.log(res);
+    return 2
+}).then(res => {
+    console.log(res);
+})
+
+
+
+
+MPromise.resolve(200).then(res => {
+    console.log('resolve:', res);
+})
+
+MPromise.all([
+    new MPromise(resolve => {
+        setTimeout(() => resolve('111'), 1000)
+    }),
+    new MPromise(resolve => {
+        setTimeout(() => resolve('222'), 500)
+    })
+]).then(res => {
+    console.log('all', res)
+})
